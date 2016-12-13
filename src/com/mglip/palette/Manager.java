@@ -12,24 +12,24 @@ import java.lang.reflect.Type;
 
 /**
  * @author shianqi@imudges.com
- *         Created by shianqi on 2016/12/4
+ * Created by shianqi on 2016/12/4
  */
 public class Manager{
 
     public static void main(String arg[]){
-        String str = HttpRequest.sendGet("https://api.bmob.cn/1/classes/Word","");
+        String str = HttpRequest.sendGet("http://localhost:3000","");
         System.out.println(str);
 
         Gson gson = new Gson();
         Type type = new TypeToken<JsonBean>() {}.getType();
         JsonBean jsonBean = gson.fromJson(str, type);
-        System.out.println(jsonBean.results.size());
+        System.out.println("results size: "+jsonBean.results.size());
 
         BufferedImage image=new BufferedImage(1080, 1980, BufferedImage.TYPE_INT_BGR);
         Graphics2D graphics=image.createGraphics();
 
 
-        for(int i=0;i<jsonBean.results.size()-1;i++){
+        for(int i=0;i<jsonBean.results.size();i++){
             graphics.setStroke(new BasicStroke(5.5f));
             graphics.setColor(Color.white);
             graphics.fillRect(0,0,1080,1980);
@@ -61,7 +61,7 @@ public class Manager{
 
 
 
-            File file =new File("D:/img/"+jsonBean.results.get(i).objectId+".png");
+            File file =new File("D:/img/"+jsonBean.results.get(i).str+"_"+jsonBean.results.get(i)._id+".png");
             try {
                 ImageIO.write(image, "png", file);
                 System.out.println("成功");
