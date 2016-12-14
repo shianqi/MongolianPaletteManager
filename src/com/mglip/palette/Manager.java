@@ -17,7 +17,7 @@ import java.lang.reflect.Type;
 public class Manager{
 
     public static void main(String arg[]){
-        String str = HttpRequest.sendGet("http://localhost:3000","");
+        String str = HttpRequest.sendGet("http://183.175.14.209:6229","");
         System.out.println(str);
 
         Gson gson = new Gson();
@@ -53,22 +53,22 @@ public class Manager{
                         x_old = cx;
                         y_old = cy;
                     }
-                    //画完一个点
+                    //
                 }
-                //画完一条线
+                //
             }
-            //画完一张图
+            //
 
 
 
-            File file =new File("D:/img/"+jsonBean.results.get(i).str+"_"+jsonBean.results.get(i)._id+".png");
+            File file =new File("C:/img/"+jsonBean.results.get(i).str+"_"+jsonBean.results.get(i)._id+".png");
             try {
                 ImageIO.write(image, "png", file);
-                System.out.println("成功");
+                System.out.println("success");
             } catch (IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
-                System.out.println("失败");
+                System.out.println("fail");
             }
         }
     }

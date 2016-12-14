@@ -17,9 +17,6 @@ public class JsonBean {
         public String ipAddress;
         public String phoneId;
         public String __v;
-
-
-
     }
 
     public List<Results> results;
